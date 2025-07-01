@@ -1,0 +1,61 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 07/01/2025 02:12:55 PM
+// Design Name: 
+// Module Name: TASK2_RAM_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module TASK2_RAM_tb( );
+
+    reg clk, we;
+    reg [2:0] addr;
+    reg [7:0] din;
+    wire [7:0] dout;
+
+    TASK2_RAM uut (
+        .clk(clk),
+        .we(we),
+        .addr(addr),
+        .din(din),
+        .dout(dout)
+    );
+
+    // Clock generation
+    always #5 clk = ~clk;
+
+    initial begin
+
+        clk = 0; we = 0; addr = 0; din = 0;
+
+        // Write data to all addresses
+        #10; we = 1;
+        addr = 3'b000; din = 8'hAA; #10;
+        addr = 3'b001; din = 8'hBB; #10;
+        addr = 3'b010; din = 8'hCC; #10;
+        addr = 3'b011; din = 8'hDD; #10;
+
+        // Read data from the addresses
+        we = 0;
+        addr = 3'b000; #10;
+        addr = 3'b001; #10;
+        addr = 3'b010; #10;
+        addr = 3'b011; #10;
+
+        $finish;
+    end
+endmodule
