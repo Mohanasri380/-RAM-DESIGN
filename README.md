@@ -91,9 +91,5 @@ This confirms that the RAM behaves correctly and consistently under both operati
 
 ✅ Outcome
 
-Verified functionality of a synchronous RAM
-
-Clean and readable Verilog code
-
-Testbench and simulation outputs match expected behavior
+![Image](https://github.com/user-attachments/assets/4a52e89c-c82d-4856-96c7-5e5f628338cf)
 
